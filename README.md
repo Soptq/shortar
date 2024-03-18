@@ -4,9 +4,9 @@
 
 Shortar is a URL shortener service backed by AO and AR.
 
-Process ID of Shortar contract: yhs3HOQ5yLsMwV1j58QnmFSopvziimSg5bSeT4Z6kPI
-Frontend deployment: ar://KleghjLxaAy4bUsvdId_JZ3pExSba9qPpt8P6XV-v5Q
-Frontend served by 4everland: https://shortar.4everland.app/
+> Process ID of Shortar contract: **yhs3HOQ5yLsMwV1j58QnmFSopvziimSg5bSeT4Z6kPI**
+> Frontend deployment: **ar://KleghjLxaAy4bUsvdId_JZ3pExSba9qPpt8P6XV-v5Q**
+> Frontend served by 4everland: **https://shortar.4everland.app/**
 
 ## Technologies Used
 
