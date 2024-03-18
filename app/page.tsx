@@ -8,7 +8,7 @@ import { Kbd } from "@nextui-org/kbd";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { GithubIcon, SearchIcon } from "@/components/icons";
 import { Key, useEffect, useState } from "react";
 import { Button } from "@nextui-org/button";
@@ -102,7 +102,7 @@ export default function Home() {
 				<div className="mt-8">
 					<Snippet hideSymbol variant="flat" color="success">
 						<span>
-							{ !!window ? window.location.origin : "" }/{ shortenResult }
+							{ !!window ? window.location.origin : "" }/?q={ shortenResult }
 						</span>
 					</Snippet>
 				</div>
@@ -229,7 +229,7 @@ export default function Home() {
 									<TableCell>
 										<Snippet hideSymbol variant="flat" color="default">
 											<span>
-												{ !!window ? window.location.origin : "" }/{ Object.values(item)[0] as string }
+												{ !!window ? window.location.origin : "" }/?q={ Object.values(item)[0] as string }
 											</span>
 										</Snippet>
 									</TableCell>

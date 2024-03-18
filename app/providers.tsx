@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { NextUIProvider } from "@nextui-org/system";
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ThemeProviderProps } from "next-themes/dist/types";
 import { Spinner } from "@nextui-org/spinner";
@@ -15,17 +15,19 @@ export interface ProvidersProps {
 
 export function Providers({ children, themeProps }: ProvidersProps) {
 	const router = useRouter();
-	const pathname = usePathname();
+	const params = useSearchParams();
 
 	React.useEffect(() => {
-		if (pathname === "/") {
+		if (!params.has("q")) {
 			return;
 		}
 
-		const result = dryrun({
+		console.log(params.get("q") as string)
+
+		dryrun({
 			process: process.env.PROCESS_ID ? process.env.PROCESS_ID : "",
 			data: '',
-			tags: [{name: 'Action', value: 'Translate'}, {name: "Code", value: pathname.split('/')[1]}],
+			tags: [{name: 'Action', value: 'Translate'}, {name: "Code", value: params.get("q") as string}],
 			anchor: 'shartar-frontend',
 		}).then((result) => {
 			if (!!result.Error) {
@@ -38,11 +40,12 @@ export function Providers({ children, themeProps }: ProvidersProps) {
 				router.push(translation);
 			}
 		}).catch((error) => {
+			console.log(error)
 			router.push('/?error=query-error');
 		});
-	}, [router, pathname]);
+	}, [router]);
 
-	if (pathname === "/") {
+	if (!params.has("q")) {
 		return (
 			<NextUIProvider navigate={router.push}>
 				<NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
